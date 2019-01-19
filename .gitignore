@@ -1,8 +1,5 @@
 # Executables
-*
-!*.*
-!*/
-!Makefile
+main
 
 # Object files
 *.o

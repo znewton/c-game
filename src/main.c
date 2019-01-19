@@ -1,9 +1,9 @@
 #include <ncurses.h>
-#include "HelloWorld.h"
+#include "main.h"
 
 int main() {
   initscr();
-  greet();
+  printw("Hello, World!");
   refresh();
   getch();
   endwin();
@@ -11,7 +11,3 @@ int main() {
   return 0;
 }
 
-int greet() {
-  printw("Hello, World!");
-  return 0;
-}
