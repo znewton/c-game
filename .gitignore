@@ -1,0 +1,10 @@
+# Executables
+*
+!*.*
+!*/
+!Makefile
+
+# Object files
+*.o
+
+
