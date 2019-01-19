@@ -19,10 +19,10 @@ OBJ=$(patsubst $(SRC)/%,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: $(_SRCFILES) $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-hello: $(OBJ)
+main: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
 
 clean:
-	rm -f $(ODIR)/*.o *~ core hello $(IDIR)/*~
+	rm -f $(ODIR)/*.o *~ core main $(IDIR)/*~
