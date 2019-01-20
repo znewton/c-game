@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include <stdlib.h>
 #include "main.h"
 #include "command.h"
 #include "play.h"
@@ -11,14 +12,18 @@ int main() {
   noecho();
 
   game_mode_t mode = COMMAND;
+  game_state_t * gameState = (struct game_state *)malloc(sizeof(struct game_state));
+  initGameState(gameState);
 
   while (mode != EXIT) {
     switch(mode) {
       case COMMAND:
+        timeout(-1);
         mode = commandLine();
         break;
       case PLAY:
-        mode = play();
+        timeout(16);
+        mode = play(gameState);
         break;
       case EXIT:
         mode = EXIT;
@@ -27,6 +32,7 @@ int main() {
   }
 
   endwin();
+  free(gameState);
 
   return 0;
 }

@@ -41,6 +41,7 @@ game_mode_t runCommand(char * cmd) {
   } else if (!strcmp(cmd, "quit")) {
     return EXIT;
   }
+  free(cmd);
   return COMMAND;
 }
 
