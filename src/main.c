@@ -1,7 +1,7 @@
 #include <ncurses.h>
-#include <string.h>
 #include "main.h"
 #include "command.h"
+#include "play.h"
 
 int main() {
 
@@ -10,15 +10,19 @@ int main() {
   keypad(stdscr, 1);
   noecho();
 
-  char * cmd;
+  game_mode_t mode = COMMAND;
 
-  while (strcmp((cmd = getCommand()), "quit")) {
-    if (!strcmp(cmd, "hello")) {
-      greet();
-    } else {
-      clear();
-      printw("Invalid command: Try \"hello\"");
-      refresh();
+  while (mode != EXIT) {
+    switch(mode) {
+      case COMMAND:
+        mode = commandLine();
+        break;
+      case PLAY:
+        mode = play();
+        break;
+      case EXIT:
+        mode = EXIT;
+        break;
     }
   }
 
@@ -27,9 +31,3 @@ int main() {
   return 0;
 }
 
-int greet() {
-  clear();
-  printw("Hello!");
-  refresh();
-  return 0;
-}

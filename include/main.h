@@ -1,6 +1,10 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int greet(void);
+typedef enum {
+  EXIT,
+  COMMAND,
+  PLAY,
+} game_mode_t;
 
 #endif
